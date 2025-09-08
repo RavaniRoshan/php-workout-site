@@ -1,0 +1,44 @@
+{
+  "name": "workout-generator-modernization",
+  "version": "1.0.0",
+  "description": "Modern workout generator with GSAP animations and Tailwind CSS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run watch:css\" \"npm run serve\"",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "tailwindcss -i ./src/css/input.css -o ./assets/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./src/css/input.css -o ./assets/css/tailwind.css --watch",
+    "build:js": "esbuild src/js/main.js --bundle --outfile=assets/js/main.js --minify",
+    "watch:js": "esbuild src/js/main.js --bundle --outfile=assets/js/main.js --watch",
+    "serve": "live-server --port=3000 --open=index.php --ignore=node_modules",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --coverage",
+    "postinstall": "echo Directories already created"
+  },
+  "keywords": [
+    "fitness",
+    "workout",
+    "gsap",
+    "tailwind",
+    "modern"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "concurrently": "^8.2.0",
+    "esbuild": "^0.19.0",
+    "jsdom": "^26.1.0",
+    "live-server": "^1.2.2",
+    "tailwindcss": "^3.4.0",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "gsap": "^3.12.0",
+    "lucide-react": "^0.542.0",
+    "tailwind-merge": "^3.3.1"
+  }
+}

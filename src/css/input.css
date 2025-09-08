@@ -1,0 +1,385 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Form Wizard Styles */
+@import './form-wizard.css';
+
+/* Custom CSS for fitness theme */
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  
+  body {
+    @apply bg-background-main text-text-primary font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(57, 255, 122, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 107, 53, 0.05) 0%, transparent 50%);
+  }
+}
+
+@layer components {
+  /* Glassmorphism card effect */
+  .glass-card {
+    @apply bg-background-card/80 backdrop-blur-md border border-white/10 rounded-2xl shadow-glass;
+  }
+  
+  /* Neon glow effects */
+  .glow-blue {
+    @apply shadow-glow-blue;
+  }
+  
+  .glow-green {
+    @apply shadow-glow-green;
+  }
+  
+  .glow-orange {
+    @apply shadow-glow-orange;
+  }
+  
+  /* Interactive button styles */
+  .btn-primary {
+    @apply bg-gradient-blue-green text-white font-semibold py-3 px-6 rounded-xl 
+           transition-all duration-300 hover:scale-105 hover:shadow-glow-blue
+           focus:outline-none focus:ring-2 focus:ring-primary-blue/50;
+  }
+  
+  .btn-secondary {
+    @apply bg-background-card/60 backdrop-blur-sm border border-white/20 text-text-primary 
+           font-medium py-2 px-4 rounded-lg transition-all duration-300 
+           hover:bg-background-elevated hover:border-white/30 hover:scale-105;
+  }
+  
+  /* Form input styles */
+  .input-field {
+    @apply bg-background-card/60 backdrop-blur-sm border border-white/20 
+           text-text-primary placeholder-text-muted rounded-lg px-4 py-3
+           transition-all duration-300 focus:border-primary-blue focus:ring-2 
+           focus:ring-primary-blue/20 focus:outline-none;
+  }
+  
+  /* Animated gradient text */
+  .gradient-text {
+    @apply bg-gradient-blue-green bg-clip-text text-transparent;
+  }
+  
+  /* Floating animation */
+  .float-animation {
+    @apply animate-float;
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:-translate-y-2 
+           hover:shadow-2xl cursor-pointer;
+  }
+  
+  /* Progress bar styles */
+  .progress-bar {
+    @apply bg-background-elevated rounded-full overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply bg-gradient-blue-green h-full transition-all duration-500 ease-out;
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-background-card rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gradient-blue-green rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply opacity-80;
+  }
+  
+  /* Text shadow utilities */
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+  
+  /* Backdrop blur utilities */
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+}
+
+/* GSAP Animation Classes */
+.gsap-fade-in {
+  opacity: 0;
+}
+
+.gsap-slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.gsap-scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.gsap-stagger-item {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.1) 25%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0.1) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+/* 
+Hero Section Specific Styles */
+.hero-section {
+  position: relative;
+  background: linear-gradient(135deg, #0B1426 0%, #1A2332 50%, #0B1426 100%);
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(57, 255, 122, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.floating-icon {
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+}
+
+.floating-icon:nth-child(2n) {
+  filter: drop-shadow(0 0 10px rgba(57, 255, 122, 0.3));
+}
+
+.floating-icon:nth-child(3n) {
+  filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.3));
+}
+
+.hero-letter {
+  display: inline-block;
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+.hero-cta-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.hero-cta-btn:hover::before {
+  left: 100%;
+}
+
+.scroll-indicator {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(-50%, -10px, 0);
+  }
+  70% {
+    transform: translate3d(-50%, -5px, 0);
+  }
+  90% {
+    transform: translate3d(-50%, -2px, 0);
+  }
+}
+
+/* Form Section Enhancements */
+.form-section {
+  background: linear-gradient(180deg, 
+    rgba(11, 20, 38, 0.8) 0%, 
+    rgba(26, 35, 50, 0.9) 50%, 
+    rgba(11, 20, 38, 0.8) 100%);
+}
+
+.equipment-option label {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.equipment-option input:checked + label {
+  transform: translateY(-2px);
+}
+
+.equipment-option label:hover {
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .floating-icon {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .floating-icon {
+    font-size: 1.5rem;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .floating-icon,
+  .scroll-indicator,
+  .hero-cta-btn::before {
+    animation: none;
+  }
+  
+  .equipment-option label,
+  .hero-cta-btn {
+    transition: none;
+  }
+}/* 
+Statistics and Testimonials Section Styles */
+.stats-testimonials-section {
+  background: linear-gradient(180deg, 
+    rgba(26, 35, 50, 0.4) 0%, 
+    rgba(11, 20, 38, 0.8) 50%, 
+    rgba(26, 35, 50, 0.4) 100%);
+}
+
+.stat-card:hover .icon-container {
+  transform: scale(1.1) rotate(5deg);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-quote {
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.carousel-dots .dot.active {
+  transform: scale(1.5);
+}
+
+.carousel-dots .dot {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-btn:hover {
+  transform: scale(1.1);
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
+}
+
+/* Testimonial avatar animations */
+.testimonial-avatar .avatar-container {
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover .avatar-container {
+  transform: scale(1.05);
+}
+
+/* Counter animation enhancement */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive testimonials */
+@media (max-width: 768px) {
+  .testimonial-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .testimonial-message {
+    font-size: 1rem;
+  }
+  
+  .testimonials-container {
+    height: auto;
+    min-height: 24rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .stat-card {
+    padding: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+}

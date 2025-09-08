@@ -1,0 +1,42 @@
+{
+  "mcpServers": {
+    "shadcn-ui-mcp-server": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@ymadd/shadcn-ui-mcp-server",
+        "--key",
+        "78d58ba6-578d-493b-baad-18d10a7bf691"
+      ]
+    },
+    "shadcn-vue-mcp": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@HelloGGX/shadcn-vue-mcp",
+        "--key",
+        "78d58ba6-578d-493b-baad-18d10a7bf691"
+      ]
+    },
+    "render": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://mcp.render.com/mcp",
+        "--header",
+        "Authorization: Bearer ${RENDER_API_KEY}"
+      ],
+      "env": {
+        "RENDER_API_KEY": "<YOUR_API_KEY>"
+      }
+    }
+  }
+}

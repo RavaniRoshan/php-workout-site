@@ -1,0 +1,102 @@
+/* workout-card.css */
+@tailwind components;
+
+@layer components {
+  .workout-card {
+    perspective: 1000px;
+    backface-visibility: hidden;
+    will-change: transform;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .card-front,
+  .card-back {
+    backface-visibility: hidden;
+    transition: transform 0.6s ease-in-out;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .transform-gpu {
+    transform: translateZ(0);
+  }
+
+  /* Staggered reveal animations */
+  .stagger-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .stagger-reveal.delay-1 {
+    transition-delay: 0.1s;
+  }
+
+  .stagger-reveal.delay-2 {
+    transition-delay: 0.2s;
+  }
+
+  .stagger-reveal.delay-3 {
+    transition-delay: 0.3s;
+  }
+
+  .stagger-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Counter animations */
+  .counter-number {
+    display: inline-block;
+    min-width: 1.5em;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .counter-increment {
+    transform: translateY(-100%);
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+
+  /* Progress animation */
+  @keyframes progress {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+  .progress-bar {
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-out;
+  }
+
+  .progress-bar.active {
+    transform: scaleX(1);
+  }
+}

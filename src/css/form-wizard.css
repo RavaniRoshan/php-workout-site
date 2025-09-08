@@ -1,0 +1,275 @@
+/* Form Wizard Enhanced Styles */
+
+/* Input Focus Effects */
+.input-container:focus-within .input-icon {
+  opacity: 1;
+  color: #00D4FF;
+}
+
+.input-field:focus + .input-icon {
+  opacity: 1;
+  color: #00D4FF;
+}
+
+/* Floating Label Animation */
+.floating-label {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+}
+
+/* Focus Ring Animation */
+.focus-ring {
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
+  animation: focusRingPulse 2s infinite;
+}
+
+@keyframes focusRingPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
+  }
+}
+
+/* Input Glow Effect */
+.input-glow {
+  animation: inputGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes inputGlow {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+
+/* Gender Selection Animations */
+.gender-label {
+  position: relative;
+  overflow: hidden;
+}
+
+.gender-label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.gender-label:hover::before {
+  left: 100%;
+}
+
+/* Selection Particles */
+.selection-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Progress Indicator Animations */
+.progress-fill {
+  background-size: 200% 100%;
+  animation: progressShimmer 2s linear infinite;
+}
+
+@keyframes progressShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Error Animation */
+.error-message {
+  animation: errorSlideIn 0.3s ease-out;
+}
+
+@keyframes errorSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Input Validation States */
+.input-field[aria-invalid="true"] {
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+}
+
+.input-field[aria-invalid="false"]:focus {
+  border-color: #00D4FF;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
+}
+
+/* Success State */
+.input-field.valid {
+  border-color: rgba(57, 255, 122, 0.5);
+  box-shadow: 0 0 0 2px rgba(57, 255, 122, 0.1);
+}
+
+/* Accessibility Enhancements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .input-field {
+    border-width: 2px;
+  }
+  
+  .gender-label {
+    border-width: 2px;
+  }
+  
+  .error-message {
+    font-weight: bold;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .floating-label,
+  .focus-ring,
+  .input-glow,
+  .gender-label::before,
+  .progress-fill,
+  .error-message {
+    animation: none;
+    transition: none;
+  }
+  
+  .gender-label:hover {
+    transform: none;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .input-field {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 1rem;
+  }
+  
+  .gender-label {
+    padding: 1.5rem 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .gender-label:hover {
+    transform: none;
+    scale: none;
+  }
+  
+  .gender-label:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  .input-field {
+    background-color: rgba(11, 20, 38, 0.8);
+  }
+  
+  .gender-label {
+    background-color: rgba(11, 20, 38, 0.6);
+  }
+}
+
+/* Focus Visible for Keyboard Navigation */
+.input-field:focus-visible {
+  outline: 2px solid #00D4FF;
+  outline-offset: 2px;
+}
+
+.gender-label:focus-visible {
+  outline: 2px solid #00D4FF;
+  outline-offset: 2px;
+}
+
+/* Loading States */
+.input-field:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-group.loading {
+  position: relative;
+}
+
+.form-group.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 20, 38, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+}
+
+/* Micro-interactions */
+.input-field:focus {
+  transform: translateY(-1px);
+}
+
+.gender-label:active {
+  transform: translateY(1px);
+}
+
+/* Success Checkmark Animation */
+.input-success::after {
+  content: '✓';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #39FF7A;
+  font-weight: bold;
+  animation: checkmarkBounce 0.5s ease-out;
+}
+
+@keyframes checkmarkBounce {
+  0% {
+    transform: translateY(-50%) scale(0);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.2);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
